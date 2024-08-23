@@ -6,6 +6,7 @@ import StackNavigator from './Navigation/StackNavigator';
 export default function App() {
   return (
    <SafeAreaView style={styles.container}>
+    <StatusBar style="auto" />
    <StackNavigator />
    </SafeAreaView>
   );

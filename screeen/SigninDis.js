@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert ,SafeAreaView,Platform} from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import axios from 'axios';
 
 const SignInDis = ({ navigation }) => {
@@ -7,32 +8,45 @@ const SignInDis = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleSignIn = async () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please enter both email and password.');
-      return;
-    }
 
-    try {
-      const response = await axios.post('https://meds-scan-backend.vercel.app/api/auth/login', {
-        email,
-        password,
-      });
+    navigation.navigate('ScanHistoryScreen');
+    // if (!email || !password) {
+    //   Alert.alert('Error', 'Please enter both email and password.');
+    //   return;
+    // }
 
-      if (response.data.success) {
-        Alert.alert('Success', 'Sign-in successful!');
-        // Navigate to the distributor dashboard or home screen
-        navigation.navigate('Home');
-      } else {
-        Alert.alert('Error', response.data.message || 'Sign-in failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('SignInDis Error:', error);
-      Alert.alert('Error', 'An error occurred during sign-in.');
-    }
+    // try {
+    //   const response = await axios.post('https://meds-scan-backend.vercel.app/api/auth/login', {
+    //     email,
+    //     password,
+    //   });
+
+    //   if (response.data.success) {
+    //     Alert.alert('Success', 'Sign-in successful!');
+    //     // Navigate to the distributor dashboard or home screen
+    //     navigation.navigate('Home');
+    //   } else {
+    //     Alert.alert('Error', response.data.message || 'Sign-in failed. Please try again.');
+    //   }
+    // } catch (error) {
+    //   console.error('SignInDis Error:', error);
+    //   Alert.alert('Error', 'An error occurred during sign-in.');
+    // }
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.component}>
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton} onPress={()=>navigation.goBack()}>
+          {Platform.OS === 'android' ? (
+          <Ionicons name="arrow-back" size={24} color="black" />
+        ) : (
+          <Ionicons name="chevron-back" size={24} color="black" />
+        )}
+          </TouchableOpacity>
+          <Text style={styles.headerTxt}>Distribution</Text>
+        </View>
       <Text style={styles.headerText}>Sign In</Text>
       <Text style={styles.subHeaderText}>You are signing in as a Distributor</Text>
       
@@ -70,15 +84,34 @@ const SignInDis = ({ navigation }) => {
       <TouchableOpacity style={styles.googleButton}>
         <Text style={styles.googleButtonText}>Sign In with Google</Text>
       </TouchableOpacity>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#FFFFFF',
+  },
+  component:{
+    paddingHorizontal: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center', // Center the content horizontally
+    position: 'relative', // Ensure the absolute position works relative to this
+    marginBottom:30
+  },
+  backButton: {
+    position: 'absolute', // Position the back button absolutely
+    left:0, // Or whatever padding you need from the left
+  },
+  headerTxt: {
+    textAlign: 'center',
+    fontSize: 18, // Adjust the font size as needed
+    fontWeight: 'bold', // Optional: makes the text bold
   },
   headerText: {
     fontSize: 24,
