@@ -18,6 +18,8 @@ import SignInDis from "../screeen/SigninDis";
 import SignInStore from "../screeen/Sign-in-Store";
 import SignUpScreenStore from "../screeen/Sign-upStore";
 import { AuthProvider, useAuth } from '../context/AuthContext';
+import ScanHistoryScreen from '../screeen/ScanHistoryScreen';
+import ProductTrackingScreen from '../screeen/ProductTrackingScreen';
 
 // Higher-order function to handle protected routes
 const ProtectedComponent = (Component) => {
@@ -52,6 +54,8 @@ const StackNavigator = () => {
           <Stack.Screen name="Sign-inDis" component={SignInDis} options={{ headerShown: false }}/>
           <Stack.Screen name="Sign-inStore" component={SignInStore} />
           <Stack.Screen name="Sign-upStore" component={SignUpScreenStore} />
+          <Stack.Screen name="ScanHistoryScreen" component={ScanHistoryScreen} options={{ headerShown: false }}/>
+          <Stack.Screen name="ProductTrackingScreen" component={ProductTrackingScreen} options={{ headerShown: false }}/>
 
           {/* Protected Routes */}
           <Stack.Screen

@@ -8,28 +8,30 @@ const SignInDis = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleSignIn = async () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please enter both email and password.');
-      return;
-    }
 
-    try {
-      const response = await axios.post('https://meds-scan-backend.vercel.app/api/auth/login', {
-        email,
-        password,
-      });
+    navigation.navigate('ScanHistoryScreen');
+    // if (!email || !password) {
+    //   Alert.alert('Error', 'Please enter both email and password.');
+    //   return;
+    // }
 
-      if (response.data.success) {
-        Alert.alert('Success', 'Sign-in successful!');
-        // Navigate to the distributor dashboard or home screen
-        navigation.navigate('Home');
-      } else {
-        Alert.alert('Error', response.data.message || 'Sign-in failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('SignInDis Error:', error);
-      Alert.alert('Error', 'An error occurred during sign-in.');
-    }
+    // try {
+    //   const response = await axios.post('https://meds-scan-backend.vercel.app/api/auth/login', {
+    //     email,
+    //     password,
+    //   });
+
+    //   if (response.data.success) {
+    //     Alert.alert('Success', 'Sign-in successful!');
+    //     // Navigate to the distributor dashboard or home screen
+    //     navigation.navigate('Home');
+    //   } else {
+    //     Alert.alert('Error', response.data.message || 'Sign-in failed. Please try again.');
+    //   }
+    // } catch (error) {
+    //   console.error('SignInDis Error:', error);
+    //   Alert.alert('Error', 'An error occurred during sign-in.');
+    // }
   };
 
   return (

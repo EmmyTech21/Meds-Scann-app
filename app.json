@@ -11,9 +11,28 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "custom photos permission",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to open the camera",
+
+          "//": "Disables the microphone permission",
+          "microphonePermission": false
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.emmanuel213.prud"
+      "bundleIdentifier": "com.emmanuel213.prud",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true,
+          "NSPhotoLibraryUsageDescription": "Select pictures for certain activities",
+          "NSCameraUsageDescription": "Take pictures for certain activities"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
