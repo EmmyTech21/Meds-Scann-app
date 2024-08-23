@@ -48,8 +48,8 @@ const StackNavigator = () => {
           <Stack.Screen name="categoryScreen" options={{ headerShown: false }} component={CategoryScreen} />
           <Stack.Screen name="Sign-in" component={SignInScreen} />
           <Stack.Screen name="Sign-up" component={SignUpScreen} />
-          <Stack.Screen name="Sign-upDis" component={SignUpScreenDis} />
-          <Stack.Screen name="Sign-inDis" component={SignInDis} />
+          <Stack.Screen name="Sign-upDis" component={SignUpScreenDis} options={{ headerShown: false }}/>
+          <Stack.Screen name="Sign-inDis" component={SignInDis} options={{ headerShown: false }}/>
           <Stack.Screen name="Sign-inStore" component={SignInStore} />
           <Stack.Screen name="Sign-upStore" component={SignUpScreenStore} />
 
