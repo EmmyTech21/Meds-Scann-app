@@ -26,12 +26,12 @@ export default function OnboardingScreen({navigation}) {
         if(currentIndex < slides.length-1){
             setCurrentIndex(currentIndex + 1);
         } else {
-            navigation.replace('Home')
+            navigation.replace('categoryScreen')
         }
     };
 
     const handleSkip = ()=> {
-        navigation.replace('Home');
+        navigation.replace('categoryScreen');
     }
   return (
     <View  style={styles.slideContainer}>
